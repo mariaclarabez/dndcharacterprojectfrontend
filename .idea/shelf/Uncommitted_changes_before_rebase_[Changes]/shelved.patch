@@ -1,0 +1,197 @@
+Index: src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import './App.css';\nimport './vendors/bootstrap/css/bootstrap.min.css';\n// import './vendors/bootstrap/bootstrap.min.css';\nimport CharacterView from './components/character/characterView';\nimport HomeView from './components/login/homeView';\nimport { Routes, Route } from \"react-router-dom\"\n\nfunction App() {\n    return (\n      <div className=\"App\">\n        <Routes>\n          <Route path=\"/\" element={ <HomeView/> } />\n          <Route path=\"create\" element={ <CharacterView/> } />\n        </Routes>\n      </div>\n    )\n  }\n  \n  export default App
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/App.js b/src/App.js
+--- a/src/App.js	(revision a0bfb9149f39b65d0b42040e2a80d752a0edc26b)
++++ b/src/App.js	(date 1650842781534)
+@@ -3,6 +3,9 @@
+ // import './vendors/bootstrap/bootstrap.min.css';
+ import CharacterView from './components/character/characterView';
+ import HomeView from './components/login/homeView';
++import WikiScreen from './components/wiki';
++import ProfileScreen from './components/profile_screen';
++import HomeScreen from './components/home_screen';
+ import { Routes, Route } from "react-router-dom"
+ 
+ function App() {
+@@ -10,7 +13,10 @@
+       <div className="App">
+         <Routes>
+           <Route path="/" element={ <HomeView/> } />
++          <Route path="/home" element={ <HomeScreen/>} />
+           <Route path="create" element={ <CharacterView/> } />
++          <Route path="/wiki" element={ <WikiScreen/>}/>
++          <Route path="/profile" element={ <ProfileScreen/>}/>
+         </Routes>
+       </div>
+     )
+Index: .env
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>REACT_APP_BASE_URL = \"http://localhost:4000\"\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.env b/.env
+--- a/.env	(revision a0bfb9149f39b65d0b42040e2a80d752a0edc26b)
++++ b/.env	(date 1650841224395)
+@@ -1,1 +1,1 @@
+-REACT_APP_BASE_URL = "http://localhost:4000"
++REACT_APP_BASE_URL = "http://localhost:4001"
+Index: src/index.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/index.css b/src/index.css
+--- a/src/index.css	(revision a0bfb9149f39b65d0b42040e2a80d752a0edc26b)
++++ b/src/index.css	(date 1650840454711)
+@@ -1,3 +1,13 @@
++:root{
++  --background: rgb(150, 150, 150);
++  --accent1: lightblue;
++  --accent2: lightgreen;
++  --accent3: rgb(280, 230, 290);
++  --accent4: rgb(110, 45, 160);
++  --darkText: rgb(36, 36, 36);
++  --lighttext: silver;
++
++}
+ body {
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+@@ -5,9 +15,127 @@
+     sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
++  background-color: var(--background);
++  color: var(--darktext);
+ }
+ 
+ code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+     monospace;
+ }
++
++.flex-noWrap{
++  display: flex;
++  justify-content: space-evenly;
++}
++
++.mainComponent{
++  background-color: var(--background);
++  display: inline-block;
++  margin-top: 26px;
++  padding-right: 26px;
++}
++.leftComponent{
++  display: inline-block;
++  padding-left: 26px;
++}
++.rightComponent{
++  display: inline-block;
++}
++.header{
++  background-color: var(--accent1);
++  height: 60px;
++  display: flex;
++  text-align: center;
++  align-content: center;
++  font-size: 30px;
++}
++.header > span{
++  display: inline-block;
++  color: darkslateblue;
++}
++.navBar{
++  background-color: var(--accent1);
++  border-radius: 10px;
++  padding: 12px;
++  margin: 16px;
++}
++.navItem{
++  width: 100%;
++  padding-top: 4px;
++  padding-bottom: 4px;
++}
++.navIcon{
++  margin-right: 6px;
++}
++.wikiBar{
++  background-color: var(--accent1);
++  border-radius: 10px;
++  padding: 12px;
++  margin: 16px;
++}
++.wikiItem{
++  width: 100%;
++  padding-top: 4px;
++  padding-bottom: 4px;
++}
++.postForm{
++  display: flex;
++}
++.postAvatarImg{
++  width: 50px;
++  height: 50px;
++  border-radius: 25px;
++  display: inline-block;
++}
++.textAreaForm{
++  flex-basis: 100%;
++  padding-left: 10px;
++}
++.textArea{
++  width: 100%;
++  height: 100px;
++  background-color: var(--accent2);
++  border: none;
++  color: silver;
++}
++.textAreaForm > .post{
++  float: right;
++  margin-top: 10px;
++  background-color: var(--accent1);
++  color: var(--darkText);
++  border-radius: 10px;
++  padding: 6px 16px 6px 16px;
++  border: none;
++}
++.post{
++  display: flex;
++  background-color: var(--accent3);
++  padding: 16px;
++  margin: 16px;
++  border-radius: 10px;
++}
++.post > div{
++  padding-left: 10px;
++  flex-basis: 100%;
++}
++.post > div > .username{
++  font-size: 14px;
++}
++.post > div > .body{
++  font-size: 18px;
++}
++.post > div > .stats{
++  display: flex;
++  justify-content: space-between;
++  margin-right: 10px;
++  margin-left: 10px;
++  font-size: 14px;
++}
++.post > div > .stats > span > .stat{
++  color: var(--accent4);
++  padding-right: 10px;
++}
++.tab{
++  color: var(--lighttext) !important;
++}
+\ No newline at end of file
