@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Home", "icon": "fas fa-home", "link": "/"
+  },
+  {
+    "title": "Create Character", "icon": "fas fa-pen", "link": "/"
+  },
+  {
+    "title": "Profile", "icon": "fas fa-user", "link": "/"
+  },
+  {
+    "title": "DND Wiki", "icon": "fas fa-info-circle", "link": "/"
+  }
+]
