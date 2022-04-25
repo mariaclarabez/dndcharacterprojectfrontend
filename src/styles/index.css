@@ -1,0 +1,135 @@
+:root{
+    --background: rgb(150, 150, 150);
+    --accent1: lightblue;
+    --accent2: rgb(200, 250, 200);
+    --accent3: rgb(280, 230, 290);
+    --accent4: rgb(110, 45, 160);
+    --darkText: rgb(36, 36, 36);
+    --lighttext: silver;
+}
+body{
+    background-color: var(--background);
+}
+
+.flex-noWrap{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainComponent{
+    display: inline-block;
+    margin-top: 26px;
+    padding-right: 26px;
+}
+.leftComponent{
+    display: inline-block;
+    padding-left: 26px;
+}
+.rightComponent{
+    display: inline-block;
+}
+.header{
+    background-color: var(--accent1);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 30px;
+}
+.header > span{
+    display: inline-block;
+    color: darkslateblue;
+}
+.navBar{
+    background-color: var(--accent1);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 16px;
+}
+.navItem{
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: left;
+}
+.navIcon{
+    margin-right: 6px;
+}
+.activeTab{
+    border-bottom: var(--darkText) 2px solid;
+    border-top: var(--darkText) 2px solid;
+}
+.wikiBar{
+    background-color: var(--accent1);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 16px;
+}
+.wikiItem{
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.postForm{
+    display: flex;
+}
+.postAvatarImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: inline-block;
+}
+.textAreaForm{
+    flex-basis: 100%;
+    padding-left: 10px;
+}
+.textArea{
+    width: 100%;
+    height: 100px;
+    background-color: var(--accent2);
+    border: none;
+    color: silver;
+}
+.textAreaForm > .post{
+    float: right;
+    margin-top: 10px;
+    background-color: var(--accent1);
+    color: var(--darkText);
+    border-radius: 10px;
+    padding: 6px 16px 6px 16px;
+    border: none;
+}
+.post{
+    display: flex;
+    background-color: var(--accent3);
+    padding: 16px;
+    margin: 16px;
+    border-radius: 10px;
+}
+.post > div{
+    padding-left: 10px;
+    flex-basis: 100%;
+    float: left;
+    text-align: left;
+}
+.post > div > .username{
+    font-size: 14px;
+}
+.post > div > .body{
+    font-size: 18px;
+}
+.post > div > .stats{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.post > div > .stats > span > .stat{
+    color: var(--accent4);
+    padding-right: 10px;
+}
+.tab{
+    color: var(--lighttext) !important;
+}

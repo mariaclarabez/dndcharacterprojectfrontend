@@ -2,7 +2,7 @@ import React from "react";
 import HomeComponent from "./home_component";
 import Navigation from "../navigation";
 import Wiki from "../wiki";
-
+import '../../styles/index.css';
 
 const Index = () => {
     return (
