@@ -1,7 +1,7 @@
 import React from "react";
 import "../../index.css";
-import PostForm from "../Post/PostForm";
-import Posts from "../Post/Posts";
+import PostForm from "../post/PostForm";
+import Posts from "../post/Posts";
 
 
 const HomeComponent = () => {
