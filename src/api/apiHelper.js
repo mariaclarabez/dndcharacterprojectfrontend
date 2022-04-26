@@ -2,6 +2,7 @@
 const CHARACTER_ENDPOINT = process.env.REACT_APP_BASE_URL + "/ddcharacters";
 const LOGIN_ENDPOINT = process.env.REACT_APP_BASE_URL + "/login";
 const REGISTER_ENDPOINT = CHARACTER_ENDPOINT + "/users";
+const POST_ENDPOINT = process.env.REACT_APP_BASE_URL + "/posts";
 
 
 export async function registerUser(username, password) {
@@ -78,6 +79,20 @@ export async function loginUser(username, password) {
     return (await result.json()).data;
 }
 
+export async function createPost(post) {
+    const requestBody = {post};
+    console.log("Called", POST_ENDPOINT);
+    const result = await fetch(POST_ENDPOINT,
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(requestBody)
+        });
+    return (await result.json()).data;
+}
 
 // const requestBody= {name, classId, raceId};
 // fetch(url, {method: POST, body: JSON.stringify(requestBody)})
