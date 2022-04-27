@@ -46,15 +46,24 @@ body{
     border-radius: 10px;
     padding: 12px;
     margin: 16px;
+    width: 100%;
+    height: 160px;
 }
 .navItem{
     width: 100%;
     padding-top: 4px;
     padding-bottom: 4px;
     text-align: left;
+    color: var(--darkText) !important;
+    float: left;
 }
 .navIcon{
     margin-right: 6px;
+    display: inline-block;
+}
+.navText{
+    white-space: nowrap;
+    display: inline-block;
 }
 .activeTab{
     border-bottom: var(--darkText) 2px solid;
@@ -132,4 +141,7 @@ body{
 }
 .tab{
     color: var(--lighttext) !important;
+}
+.replyForm{
+    padding-left: 16px;
 }

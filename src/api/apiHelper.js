@@ -78,6 +78,59 @@ export async function loginUser(username, password) {
     return (await result.json()).data;
 }
 
+export async function createPost(userId, body, tags) {
+    const requestBody = {userId, body, tags};
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts",
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(requestBody)
+        });
+}
+
+export async function likePost(postId){
+    const requestBody = {postId};
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts",
+        {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+            body: JSON.stringify(requestBody)
+        })
+}
+
+export async function getAllPosts(){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts");
+    return (await result.json());
+}
+
+export async function getReplies(postId){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies/" + postId);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies/" + postId);
+    return (await result.json());
+}
+
+export async function postReply(postId, userId, body){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies");
+    const requestBody = {postId, userId, body};
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies",
+        {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(requestBody)
+        })
+}
 
 // const requestBody= {name, classId, raceId};
 // fetch(url, {method: POST, body: JSON.stringify(requestBody)})

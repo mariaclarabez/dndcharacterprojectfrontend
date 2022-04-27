@@ -1,14 +1,14 @@
 [
   {
-    "title": "Home", "icon": "fas fa-home", "link": "/"
+    "title": "Home", "icon": "fas fa-home", "link": "/home"
   },
   {
-    "title": "Create Character", "icon": "fas fa-pen", "link": "/"
+    "title": "Create", "icon": "fas fa-pen", "link": "/create"
   },
   {
-    "title": "Profile", "icon": "fas fa-user", "link": "/"
+    "title": "Profile", "icon": "fas fa-user", "link": "/profile"
   },
   {
-    "title": "DND Wiki", "icon": "fas fa-info-circle", "link": "/"
+    "title": "DND Wiki", "icon": "fas fa-info-circle", "link": "/wiki"
   }
 ]

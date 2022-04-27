@@ -1,14 +1,18 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const NavigationItem = ({
-    data =   {
+    data = {
         "title": "Home", "icon": "fa fas-home", "link": "/"
     },
+    active = 'Home'
 }) => {
     return(
-        <div className={"navItem"}>
+        <div>
+        <Link to={`${data.link}`} id={`${data.title}`} className={`navItem ${active === data.title ? "activeTab" : ""}`} >
             <i className={`${data.icon} navIcon`}/>
-            <span>{data.title}</span>
+            <span className={`navText`}>{data.title}</span>
+        </Link>
         </div>
     )
 }
