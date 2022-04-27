@@ -20,6 +20,7 @@ function App() {
           <Route path="create" element={ <CharacterView/> } />
           <Route path="/profile" element={<ProfileScreen/>}/>
           <Route path="/wiki" element={<WikiScreen/>}/>
+            <Route path="create/user/:userId" element={<CharacterView />} />
         </Routes>
       </div>
     )
