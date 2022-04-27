@@ -142,3 +142,6 @@ body{
 .tab{
     color: var(--lighttext) !important;
 }
+.replyForm{
+    padding-left: 16px;
+}

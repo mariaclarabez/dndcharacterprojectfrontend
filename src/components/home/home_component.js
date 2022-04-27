@@ -2,17 +2,38 @@ import React, {useState} from "react";
 import "../../index.css";
 import PostForm from "../post/PostForm";
 import Posts from "../post/Posts";
+import {createPost} from "../../api/apiHelper";
 
 
 const HomeComponent = () => {
     const [active, setActive] = useState('all');
+    const [body, setBody] = useState('');
+    const [newPost, setNewPost] = useState(false);
+    const availableTags = ['#dm', '#characters', '#maps', '#memes'];
+
     const handleClick = (event) => {
         setActive(event.target.id);
-    }
+    };
+
+    const handleCreate = async () => {
+        console.log(body);
+        const regex = /#[^ ]+/g
+        const tags = body.match(regex);
+        var validTags = tags != undefined ? tags.filter(t => availableTags.includes(t)) : [];
+        validTags = validTags.join(";");
+        const post = {
+            "userId": 1,
+            "body": body,
+            "tags": validTags
+        }
+        console.log(post);
+        const response = await createPost(post.userId, post.body, post.tags);
+        setNewPost(!newPost);
+    };
     return(
         <div className={"container homeCenter"}>
             <div className={`postArea`}>
-                <PostForm/>
+                <PostForm onPost={handleCreate} setBody={setBody}/>
             </div>
             <ul className={`nav mb-2 nav-tabs`}>
                 <ul className={`nav nav-tabs flex-nowrap wd-main-section-tabs wd-text-no-wrap`}>
@@ -49,7 +70,7 @@ const HomeComponent = () => {
 
                 </ul>
             </ul>
-            <Posts active={active}/>
+            <Posts active={active} triggerReload={newPost}/>
         </div>
     );
 }

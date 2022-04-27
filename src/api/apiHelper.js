@@ -2,7 +2,6 @@
 const CHARACTER_ENDPOINT = process.env.REACT_APP_BASE_URL + "/ddcharacters";
 const LOGIN_ENDPOINT = process.env.REACT_APP_BASE_URL + "/login";
 const REGISTER_ENDPOINT = CHARACTER_ENDPOINT + "/users";
-const POST_ENDPOINT = process.env.REACT_APP_BASE_URL + "/posts";
 
 
 export async function registerUser(username, password) {
@@ -79,10 +78,10 @@ export async function loginUser(username, password) {
     return (await result.json()).data;
 }
 
-export async function createPost(post) {
-    const requestBody = {post};
-    console.log("Called", POST_ENDPOINT);
-    const result = await fetch(POST_ENDPOINT,
+export async function createPost(userId, body, tags) {
+    const requestBody = {userId, body, tags};
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts",
         {
             headers: {
                 'Accept': 'application/json',
@@ -91,7 +90,26 @@ export async function createPost(post) {
             method: 'POST',
             body: JSON.stringify(requestBody)
         });
-    return (await result.json()).data;
+}
+
+export async function likePost(postId){
+    const requestBody = {postId};
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts",
+        {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+            body: JSON.stringify(requestBody)
+        })
+}
+
+export async function getAllPosts(){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts");
+    return (await result.json());
 }
 
 // const requestBody= {name, classId, raceId};
