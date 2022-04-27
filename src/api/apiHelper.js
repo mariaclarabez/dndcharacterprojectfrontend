@@ -112,5 +112,25 @@ export async function getAllPosts(){
     return (await result.json());
 }
 
+export async function getReplies(postId){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies/" + postId);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies/" + postId);
+    return (await result.json());
+}
+
+export async function postReply(postId, userId, body){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies");
+    const requestBody = {postId, userId, body};
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies",
+        {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(requestBody)
+        })
+}
+
 // const requestBody= {name, classId, raceId};
 // fetch(url, {method: POST, body: JSON.stringify(requestBody)})

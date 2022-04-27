@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PostForm from "./PostForm";
-import {likePost} from "../../api/apiHelper";
+import {likePost, postReply} from "../../api/apiHelper";
+import Replies from "./Replies";
 
 const Post = ({
     data = {
@@ -18,9 +19,13 @@ const Post = ({
     const [showReplyForm, setShowReplyForm] = useState(false);
     const [replyBody, setReplyBody] = useState('');
     const [likes, setLikes] = useState(data.likes);
+    const [trigger, setTrigger] = useState(false);
 
-    const onPost = () => {
-
+    console.log(`in post: ${data.id}`)
+    const onPost = async () => {
+        await postReply(data.id, 1, replyBody);
+        data.replies = data.replies + 1;
+        setTrigger(!trigger);
     }
     const onLike = () => {
         likePost(data.id);
@@ -62,7 +67,10 @@ const Post = ({
             </div>
             {showReplyForm &&
                 <div className={`replyForm`}>
-                    <PostForm onPost={onPost} body={setReplyBody}/>
+                    {data.replies > 0 &&
+                        <Replies parent={data.id} refresh={trigger}/>
+                    }
+                    <PostForm onPost={onPost} setBody={setReplyBody}/>
                 </div>
             }
         </>
