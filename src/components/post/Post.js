@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import PostForm from "./PostForm";
 import {likePost, postReply} from "../../api/apiHelper";
 import Replies from "./Replies";
+import {useNavigate} from 'react-router-dom';
+import {bake_cookie} from "sfcookies";
+
 
 const Post = ({
     data = {
@@ -21,6 +24,8 @@ const Post = ({
     const [likes, setLikes] = useState(data.likes);
     const [trigger, setTrigger] = useState(false);
 
+    const navigate = useNavigate();
+
     console.log(`in post: ${data.id}`)
     const onPost = async () => {
         await postReply(data.id, 1, replyBody);
@@ -39,6 +44,11 @@ const Post = ({
     const onShare = () => {
         
     }
+
+    const toProfile = (event) => {
+        bake_cookie("profileId", event.target.id);
+        navigate("/profile");
+    }
     
     return(
         <>
@@ -47,7 +57,7 @@ const Post = ({
                     src={data.avatar}
                     className={`postAvatarImg`}/>
                 <div>
-                    <div className={`username`}>{data.username}</div>
+                    <div id={data.userId} className={`username`} onClick={toProfile}>{data.username}</div>
                     <div className={`body`}>{data.body}</div>
                     <div className={`stats`}>
                         <div onClick={onLike}>

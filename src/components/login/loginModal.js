@@ -4,8 +4,8 @@ import {React, useState} from "react";
 import Button from 'react-bootstrap/Button'
 import {useNavigate} from 'react-router-dom';
 import {loginUser} from '../../api/apiHelper'
-import Form from "react-bootstrap/Form"
-
+import Form from "react-bootstrap/Form";
+import {bake_cookie} from "sfcookies";
 
 export default function LoginModal({show, onUpdateLogin, onCancel}) {
 
@@ -30,7 +30,8 @@ export default function LoginModal({show, onUpdateLogin, onCancel}) {
         if (result.error) {
             setLoginError(result.error);
         } else {
-            navigate("/create/user/"+result.id)
+            bake_cookie("userId", result.id);
+            navigate("/home")
             setLoginError();
         }
 

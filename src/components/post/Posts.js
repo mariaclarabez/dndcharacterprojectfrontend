@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import data from "./postData.json";
-import { getAllPosts } from "../../api/apiHelper";
+import { getAllPosts, getUserPosts } from "../../api/apiHelper";
 import Post from "./Post";
 
-const Posts = ({active = 'all', triggerReload}) => {
+const Posts = ({active = 'all', triggerReload, id = null}) => {
     const [posts, setPosts] = useState([]);
 
     useEffect (() => {
         const fetchData = async () => {
-            const filteredPosts = await getAllPosts();
+            const filteredPosts = id == null ? await getAllPosts() : await getUserPosts(id);
             setPosts(await filteredPosts.reverse());
         }
         fetchData();

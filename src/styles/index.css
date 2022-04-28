@@ -47,7 +47,7 @@ body{
     padding: 12px;
     margin: 16px;
     width: 100%;
-    height: 160px;
+    overflow: hidden;
 }
 .navItem{
     width: 100%;
@@ -144,4 +144,51 @@ body{
 }
 .replyForm{
     padding-left: 16px;
+}
+.profileAvatar{
+    height: 20%;
+    width: 20%;
+    border-radius: 100px;
+    display: inline-block;
+    border: 1px solid black;
+}
+.profileHeader{
+    display: flex;
+    margin-left: 26px;
+    background-color: var(--accent2);
+    padding: 10px;
+    border-radius: 20px;
+}
+.profileHeaderUserName{
+    margin-left: 26px;
+    font-size: 20px;
+    display: flex;
+}
+.profileHeaderName{
+    margin-left: 26px;
+    font-size: 30px;
+    display: flex;
+}
+.profileBio{
+    margin-left: 26px;
+    font-size: 16px;
+    display: flex;
+    text-align: left;
+}
+.profileData{
+    margin-left: 10px;
+    justify-content: left;
+}
+.profileBody{
+    margin-left: 26px;
+    margin-top: 26px;
+    background-color: var(--accent2);
+    border-radius: 20px;
+    padding: 10px;
+}
+.profileNavItem{
+    color: var(--darkText) !important;
+}
+.editButton{
+    padding: 5px;
 }
