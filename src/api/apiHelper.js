@@ -231,5 +231,19 @@ export async function getUser(id){
     return (await result.json());
 }
 
+export async function updateUser(name, bio, avatar, id){
+    console.log("Called", CHARACTER_ENDPOINT + `/profile/${id}`);
+    const requestBody = {name, bio, avatar};
+    const result = await fetch(CHARACTER_ENDPOINT + `/profile/${id}`,
+        {
+            headers:{
+                'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+                body: JSON.stringify(requestBody)
+        });
+}
+
 // const requestBody= {name, classId, raceId};
 // fetch(url, {method: POST, body: JSON.stringify(requestBody)})
