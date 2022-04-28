@@ -3,6 +3,7 @@ import "../../index.css";
 import PostForm from "../post/PostForm";
 import Posts from "../post/Posts";
 import {createPost} from "../../api/apiHelper";
+import {read_cookie, bake_cookie} from "sfcookies";
 
 
 const HomeComponent = () => {
@@ -10,6 +11,10 @@ const HomeComponent = () => {
     const [body, setBody] = useState('');
     const [newPost, setNewPost] = useState(false);
     const availableTags = ['#dm', '#characters', '#maps', '#memes'];
+
+    bake_cookie("profileId", "");
+    const uid = read_cookie("userId");
+
 
     const handleClick = (event) => {
         setActive(event.target.id);
@@ -22,7 +27,7 @@ const HomeComponent = () => {
         var validTags = tags != undefined ? tags.filter(t => availableTags.includes(t)) : [];
         validTags = validTags.join(";");
         const post = {
-            "userId": 1,
+            "userId": read_cookie("userId"),
             "body": body,
             "tags": validTags
         }
@@ -32,9 +37,11 @@ const HomeComponent = () => {
     };
     return(
         <div className={"container homeCenter"}>
-            <div className={`postArea`}>
-                <PostForm onPost={handleCreate} setBody={setBody}/>
-            </div>
+            {uid != "" &&
+                <div className={`postArea`}>
+                    <PostForm onPost={handleCreate} setBody={setBody}/>
+                </div>
+            }
             <ul className={`nav mb-2 nav-tabs`}>
                 <ul className={`nav nav-tabs flex-nowrap wd-main-section-tabs wd-text-no-wrap`}>
                     <li className={`nav-item`}>

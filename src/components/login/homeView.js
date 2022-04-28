@@ -5,6 +5,7 @@ import LoginModal from "./loginModal";
 import RegisterModal from "./registerModal"
 import { React, useState } from "react";
 import {registerUser, loginUser} from '../../api/apiHelper'
+import {bake_cookie} from "sfcookies";
 
 
 function HomeView(){
@@ -42,6 +43,9 @@ function HomeView(){
         setShowRegister(false);
     }
 
+    bake_cookie("userId", "");
+    bake_cookie("profileId", "");
+
 
     return (
         <>
@@ -50,7 +54,7 @@ function HomeView(){
             <div className="dragon-div">
             <img className="dragon-img" src={dragon}></img></div>
   
-        <div class="title">
+        <div className="title">
             <h1>Dungeons and Dragons Character Generator</h1>
         </div>
 
@@ -63,7 +67,7 @@ function HomeView(){
         <button className="register-button" onClick={register}>Register</button>
 
         <div className="continue-as-guest-button">
-            <Link to="/create">Continue as Guest</Link>
+            <Link to="/home">Continue as Guest</Link>
         </div>
 
         </div>

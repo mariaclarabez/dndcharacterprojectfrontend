@@ -199,6 +199,12 @@ export async function getAllPosts(){
     return (await result.json());
 }
 
+export async function getUserPosts(id){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/" + id);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/" + id);
+    return (await result.json());
+}
+
 export async function getReplies(postId){
     console.log("Called", CHARACTER_ENDPOINT + "/posts/replies/" + postId);
     const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies/" + postId);
@@ -217,6 +223,12 @@ export async function postReply(postId, userId, body){
             method: 'POST',
             body: JSON.stringify(requestBody)
         })
+}
+
+export async function getUser(id){
+    console.log("Called", CHARACTER_ENDPOINT + `/profile/${id}`);
+    const result = await fetch(CHARACTER_ENDPOINT + `/profile/${id}`);
+    return (await result.json());
 }
 
 // const requestBody= {name, classId, raceId};

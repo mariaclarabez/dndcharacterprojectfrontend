@@ -16,7 +16,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={ <HomeView/> } />
-          <Route path="/home" element={<HomeScreen/>}/>
+            <Route path="/home" element={<HomeScreen/>}/>
           <Route path="create" element={ <CharacterView/> } />
           <Route path="/profile" element={<ProfileScreen/>}/>
           <Route path="/wiki" element={<WikiScreen/>}/>
