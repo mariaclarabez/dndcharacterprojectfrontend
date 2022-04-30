@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {getUser, createPost, updateUser} from "../../api/apiHelper";
-import {read_cookie} from "sfcookies";
+import {read_cookie, bake_cookie} from "sfcookies";
 import Posts from "../post/Posts";
 import PostForm from "../post/PostForm";
 import EditProfile from "./EditProfile";
@@ -15,7 +15,7 @@ const ProfileComponent = () => {
     const [editUser, setEditUser] = useState({});
     const availableTags = ['#dm', '#characters', '#maps', '#memes'];
 
-    const defaultAvatar = "https://ih1.redbubble.net/image.783510818.4628/st,small,845x845-pad,1000x1000,f8f8f8.u8.jpg";
+    const defaultAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkw1WKC4E9OLSY7SOrahR3nTeGNaYbBblzNQ&usqp=CAU"
     const activeUser = read_cookie("profileId") === "" || read_cookie("profileId") === read_cookie("userId");
     const id = activeUser ? read_cookie("userId") : read_cookie("profileId");
 
@@ -24,8 +24,11 @@ const ProfileComponent = () => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await getUser(id);
-            const users = await data
-            setUser(users[0]);
+            const users = await data;
+            setUser({
+                ...users[0],
+                "dob": new Date(users[0].dob)
+            });
             console.log(user);
         }
         fetchData();
@@ -52,10 +55,19 @@ const ProfileComponent = () => {
         setActive(event.target.id);
     }
     
-    const handleSaveEdit = () => {
+    const handleSaveEdit = async () => {
+        console.log(editUser);
+        await updateUser(editUser.name,
+            editUser.bio,
+            editUser.avatar,
+            editUser.dob.toISOString().split('T')[0],
+            editUser.hometown, id
+        );
         setUser(editUser);
-        updateUser(user.name, user.bio, user.avatar, id);
+        bake_cookie("userAvatar", editUser.avatar);
+        console.log(user);
         setShowEdit(false);
+        setTrigger(!trigger);
     }
     
     const handleCancelEdit = () => {
@@ -73,7 +85,7 @@ const ProfileComponent = () => {
         {showEdit &&
             <EditProfile user={editUser} setUser={setEditUser} onSave={handleSaveEdit} onCancel={handleCancelEdit}/>
         }
-        {!showEdit &&
+        {!showEdit && user &&
             <>
                 <div className={`profileHeader`}>
                     <img
@@ -84,8 +96,20 @@ const ProfileComponent = () => {
                             {user.name}
                         </div>
                         <div className={`profileHeaderUserName`}>
-                            @{user.username}
+                            <span className={`profileDetail`}>@{user.username}</span>
                         </div>
+                        {activeUser &&
+                            <>
+                                <div className={`profileHeaderUserName`}>
+                                    <span
+                                        className={`profileDetail`}>{user.dob ? "Birthday: " + user.dob.toDateString() : "date of birth not given"}</span>
+                                </div>
+                                <div className={`profileHeaderUserName`}>
+                                    <span
+                                        className={`profileDetail`}>{user.hometown != null ? "Hometown: " + user.hometown : "hometown not given"}</span>
+                                </div>
+                            </>
+                        }
                         <hr/>
                         <div className={`profileBio`}>
                             {user.bio}

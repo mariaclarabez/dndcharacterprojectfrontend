@@ -31,6 +31,7 @@ export default function LoginModal({show, onUpdateLogin, onCancel}) {
             setLoginError(result.error);
         } else {
             bake_cookie("userId", result.id);
+            bake_cookie("userAvatar", result.avatar);
             navigate("/home")
             setLoginError();
         }

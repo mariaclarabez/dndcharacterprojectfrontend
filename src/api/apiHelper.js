@@ -231,9 +231,9 @@ export async function getUser(id){
     return (await result.json());
 }
 
-export async function updateUser(name, bio, avatar, id){
+export async function updateUser(name, bio, avatar, dob, hometown, id){
     console.log("Called", CHARACTER_ENDPOINT + `/profile/${id}`);
-    const requestBody = {name, bio, avatar};
+    const requestBody = {name, bio, avatar, dob, hometown};
     const result = await fetch(CHARACTER_ENDPOINT + `/profile/${id}`,
         {
             headers:{

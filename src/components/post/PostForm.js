@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {createPost} from "../../api/apiHelper";
+import {read_cookie} from "sfcookies";
 
 const PostForm = ({onPost, setBody}) => {
 
@@ -10,7 +11,7 @@ const PostForm = ({onPost, setBody}) => {
     return (
         <div className={`postForm flex-noWrap`}>
             <img
-                src={`https://static.vecteezy.com/system/resources/previews/004/649/010/large_2x/cute-wizard-mascot-free-vector.jpg`}
+                src={`${read_cookie("userAvatar")}`}
                 className={`postAvatarImg`}/>
             <div className={'textAreaForm'}>
                 <textarea placeholder={"sup"}

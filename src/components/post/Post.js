@@ -3,7 +3,7 @@ import PostForm from "./PostForm";
 import {likePost, postReply} from "../../api/apiHelper";
 import Replies from "./Replies";
 import {useNavigate} from 'react-router-dom';
-import {bake_cookie} from "sfcookies";
+import {bake_cookie, read_cookie} from "sfcookies";
 
 
 const Post = ({
@@ -80,7 +80,9 @@ const Post = ({
                     {data.replies > 0 &&
                         <Replies parent={data.id} refresh={trigger}/>
                     }
-                    <PostForm onPost={onPost} setBody={setReplyBody}/>
+                    {read_cookie("userId") != "" &&
+                        <PostForm onPost={onPost} setBody={setReplyBody}/>
+                    }
                 </div>
             }
         </>
