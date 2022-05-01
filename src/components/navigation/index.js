@@ -35,9 +35,9 @@ const Navigation = ({
                         <span className={`navText`}>Characters</span>
                     </Link>
             }
-                <Link to={`/wiki`} id={`Wiki`} className={`navItem ${active === "Wiki" ? "activeTab" : ""}`} >
+                <Link to={`/search`} id={`Search`} className={`navItem ${active === "Search" ? "activeTab" : ""}`} >
                     <i className={`fa fas-lightbulb navIcon`}/>
-                    <span className={`navText`}>Wiki</span>
+                    <span className={`navText`}>Search</span>
                 </Link>
                 <Link to={`/`} className={`navItem`} >
                     <i className={`fa fas-lightbulb navIcon`}/>
