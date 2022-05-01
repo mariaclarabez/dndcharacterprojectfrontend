@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './search.css'
 
 
 function SearchBar(props) {
@@ -20,7 +21,7 @@ function SearchBar(props) {
     return (
         <div>
             <div className="control">
-                <input className="input" type="text" onChange={handleInput} value={searchText}
+                <input className="input input-field" type="text" onChange={handleInput} value={searchText}
                 onKeyPress={handleEnterKeyPressed} placeholder="Search spells, races, or classes" />
             </div>
 

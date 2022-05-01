@@ -1,0 +1,35 @@
+.input-field {
+    width: 30%;
+}
+
+.full-div{
+    align-items: center;
+
+/* 
+    position: fixed;
+    align-items: center;
+    top: 0px;
+    left: 10%;
+    width: 80%;
+    
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(203,143,190); */
+
+
+}
+.search-title{
+    padding-top: 30px;
+    color: white;
+    padding-bottom: 30px;
+}
+
+.search-container {
+    padding-top: 40px;
+}
+
+.mainComponent{
+    display: inline-block;
+    margin-top: 26px;
+    padding-right: 26px;
+}

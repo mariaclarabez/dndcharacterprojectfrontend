@@ -12,7 +12,6 @@ export default function SpellDetails(props) {
         <div>
             <h4>{results.data.name}</h4>
             <p>Spell description: {results.data.desc}</p>
-            <p>Attack type: {results.data.attack_type}</p>
             <p>Casting time: {results.data.casting_time}</p>
             <p>Duration: {results.data.duration}</p>
             <p>Range: {results.data.range}</p>
