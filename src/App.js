@@ -7,8 +7,9 @@ import CharacterView from './components/character/characterView';
 import HomeView from './components/login/homeView';
 import HomeScreen from './components/home';
 import ProfileScreen from './components/profile';
-import WikiScreen from './components/wiki';
 import { Routes, Route } from "react-router-dom"
+import SearchComponent from './components/SearchComponent';
+import DetailsComponent from "./components/DetailsComponent";
 import './index.css';
 
 function App() {
@@ -18,10 +19,19 @@ function App() {
           <Route path="/" element={ <HomeScreen/> } />
             <Route path="/login" element={<HomeView/>}/>
           <Route path="create" element={ <CharacterView/> } />
+<<<<<<< HEAD
             <Route path="/profile" element={<ProfileScreen/>}/>
             <Route path="/profile/:uid" element={<ProfileScreen/>}/>
             <Route path="/wiki" element={<WikiScreen/>}/>
+=======
+          <Route path="/search" element={ <SearchComponent/> } />
+          <Route path="/search/:searchTerm" element={ <SearchComponent/> } />
+
+          <Route path="/profile" element={<ProfileScreen/>}/>
+>>>>>>> clara-1
             <Route path="create/user/:userId" element={<CharacterView />} />
+            <Route path="/details/:type/:name" element={ <DetailsComponent/> } />
+
         </Routes>
       </div>
     )
