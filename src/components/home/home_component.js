@@ -42,8 +42,7 @@ const HomeComponent = () => {
                     <PostForm onPost={handleCreate} setBody={setBody}/>
                 </div>
             }
-            <ul className={`nav mb-2 nav-tabs`}>
-                <ul className={`nav nav-tabs flex-nowrap wd-main-section-tabs wd-text-no-wrap`}>
+            <ul className={`nav mb-2 nav-tabs homeTabs`}>
                     <li className={`nav-item`}>
                         <span id={'all'}
                               className={`nav-link ${active === 'all' ? 'active' : ''}`}
@@ -74,8 +73,6 @@ const HomeComponent = () => {
                               onClick={handleClick}
                               className={`nav-link ${active === 'memes' ? 'active' : ''}`}>Memes</span>
                     </li>
-
-                </ul>
             </ul>
             <Posts active={active} triggerReload={newPost}/>
         </div>

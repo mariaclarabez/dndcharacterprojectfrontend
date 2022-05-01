@@ -6,9 +6,15 @@
     --accent4: rgb(110, 45, 160);
     --darkText: rgb(36, 36, 36);
     --lighttext: silver;
+
+    --darkPurple: rgb(143, 74, 108);
+    --lightPurple: rgb(203, 143, 190);
+    --lightPink: rgb(215,151,184);
+    --lightOrange: rgb(251,179,160);
+    --darkAccent: rgb(81,67,93);
 }
 body{
-    background-color: var(--background);
+    background-color: var(--darkAccent);
 }
 
 .flex-noWrap{
@@ -29,7 +35,7 @@ body{
     display: inline-block;
 }
 .header{
-    background-color: var(--accent1);
+    background-color: var(--lightPink);
     height: 60px;
     width: 100%;
     display: flex;
@@ -39,10 +45,10 @@ body{
 }
 .header > span{
     display: inline-block;
-    color: darkslateblue;
+    color: var(--darkAccent);
 }
 .navBar{
-    background-color: var(--accent1);
+    background-color: var(--lightPink);
     border-radius: 10px;
     padding: 12px;
     margin: 16px;
@@ -54,7 +60,7 @@ body{
     padding-top: 4px;
     padding-bottom: 4px;
     text-align: left;
-    color: var(--darkText) !important;
+    color: var(--darkAccent) !important;
     float: left;
 }
 .navIcon{
@@ -66,8 +72,8 @@ body{
     display: inline-block;
 }
 .activeTab{
-    border-bottom: var(--darkText) 2px solid;
-    border-top: var(--darkText) 2px solid;
+    border-bottom: var(--darkAccent) 2px solid;
+    border-top: var(--darkAccent) 2px solid;
 }
 .wikiBar{
     background-color: var(--accent1);
@@ -96,14 +102,15 @@ body{
 .textArea{
     width: 100%;
     height: 100px;
-    background-color: var(--accent2);
+    background-color: var(--darkPurple);
     border: none;
-    color: silver;
+    border-radius: 5px;
+    color: var(--lightOrange);
 }
 .textAreaForm > .post{
     float: right;
     margin-top: 10px;
-    background-color: var(--accent1);
+    background-color: var(--lightOrange);
     color: var(--darkText);
     border-radius: 10px;
     padding: 6px 16px 6px 16px;
@@ -111,7 +118,7 @@ body{
 }
 .post{
     display: flex;
-    background-color: var(--accent3);
+    background-color: var(--lightPink);
     padding: 16px;
     margin: 16px;
     border-radius: 10px;
@@ -135,11 +142,23 @@ body{
     font-size: 14px;
 }
 .post > div > .stats > div{
-    color: var(--accent4);
+    color: var(--darkAccent);
     padding-right: 3em;
 }
+::placeholder{
+    color: silver;
+}
 .tab{
-    color: var(--lighttext) !important;
+    color: var(--lightOrange) !important;
+}
+.homeTabs{
+    color: var(--lightOrange);
+    border-color: var(--lightOrange);
+}
+.homeTabs > li > .active{
+    background-color: var(--lightOrange) !important;
+    color: var(--darkAccent);
+    border-color: var(--lightOrange) !important;
 }
 .replyForm{
     padding-left: 16px;

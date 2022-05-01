@@ -4,6 +4,7 @@ import {read_cookie, bake_cookie} from "sfcookies";
 import Posts from "../post/Posts";
 import PostForm from "../post/PostForm";
 import EditProfile from "./EditProfile";
+import ProfileCharacters from "./ProfileCharacters";
 
 const ProfileComponent = ({destinationUser}) => {
     const [user, setUser] = useState({});
@@ -17,7 +18,6 @@ const ProfileComponent = ({destinationUser}) => {
 
     console.log(destinationUser);
 
-    const defaultAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkw1WKC4E9OLSY7SOrahR3nTeGNaYbBblzNQ&usqp=CAU"
     const activeUser = destinationUser === undefined || read_cookie("profileId") === destinationUser;
     const id = activeUser ? read_cookie("userId") : destinationUser;
 
@@ -91,7 +91,7 @@ const ProfileComponent = ({destinationUser}) => {
             <>
                 <div className={`profileHeader`}>
                     <img
-                        src={user.avatar ? `${user.avatar}` : `${defaultAvatar}`}
+                        src={`${user.avatar}`}
                         className={`profileAvatar`}/>
                     <div className={`profileData`}>
                         <div className={`profileHeaderName`}>
@@ -142,6 +142,9 @@ const ProfileComponent = ({destinationUser}) => {
                     }
                     {active === "Posts" &&
                         <Posts id={id} triggerReload={trigger}/>
+                    }
+                    {active === "Characters" &&
+                        <ProfileCharacters user={id}/>
                     }
                 </div>
             </>

@@ -8,7 +8,7 @@ const Index = () => {
     return (
         <>
             <div className={"row header"}>
-                <span>Wizards and Shit</span>
+                <span><b>Dungeons and Dragons Forum</b></span>
             </div>
             <div className={"row flex-noWrap"}>
                 <div className={"col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 leftComponent"}>

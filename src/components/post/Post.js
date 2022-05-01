@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import PostForm from "./PostForm";
-import {likePost, postReply, deletePost} from "../../api/apiHelper";
+import {likePost, postReply, deletePost, unlikePost} from "../../api/apiHelper";
 import Replies from "./Replies";
 import {useNavigate} from 'react-router-dom';
 import {bake_cookie, read_cookie} from "sfcookies";
@@ -18,7 +18,8 @@ const Post = ({
         "replies": 0,
         "shares": 0
 
-    }
+    },
+    reload
 }) => {
     const [showReplyForm, setShowReplyForm] = useState(false);
     const [replyBody, setReplyBody] = useState('');
@@ -41,11 +42,15 @@ const Post = ({
         setShowLogin(false);
     }
 
-    const onLike = () => {
+    const onLike = async () => {
         if (role !== 'anon') {
-            likePost(data.id);
-            console.log(role);
-            setLikes(likes + 1);
+            if (data.liked === "FALSE") {
+                await likePost(data.id, read_cookie("userId"));
+            }
+            else{
+                await unlikePost(data.id, read_cookie("userId"));
+            }
+            reload();
         }
         else{
             setShowLogin(true);
@@ -87,12 +92,17 @@ const Post = ({
                     src={data.avatar}
                     className={`postAvatarImg`}/>
                 <div>
-                    <div id={data.userId} className={`username`} onClick={toProfile}>{data.username}</div>
+                    <div id={data.userId} className={`username`} onClick={toProfile}>@{data.username}</div>
                     <div className={`body`}>{data.body}</div>
                     <div className={`stats`}>
                         <div onClick={onLike}>
-                            <i className={`fas fa-heart stat`}/>
-                            {likes}
+                            {data.liked === "TRUE"
+                                ?
+                                <i className={`fas fa-heart stat`}/>
+                                :
+                                <i className={`far fa-heart stat`}/>
+                            }
+                            {data.likes}
                         </div>
                         <div onClick={onReply}>
                             <i className={`fas fa-comment stat`}/>

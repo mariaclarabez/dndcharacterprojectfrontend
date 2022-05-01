@@ -147,6 +147,12 @@ export async function getCharacter() {
     return (await result.json()).data;
 }
 
+export async function getCharacterForUser(uid){
+    console.log("Called", CHARACTER_ENDPOINT + `/${uid}`);
+    const result = await fetch(CHARACTER_ENDPOINT + `/${uid}`);
+    return (await result.json());
+}
+
 export async function getAllRaces() {
     console.log("Called", CHARACTER_ENDPOINT + "/races");
     const result = await fetch(CHARACTER_ENDPOINT + "/races");
@@ -191,8 +197,8 @@ export async function deletePost(postId){
         });
 }
 
-export async function likePost(postId){
-    const requestBody = {postId};
+export async function likePost(postId, userId){
+    const requestBody = {postId, userId};
     console.log("Called", CHARACTER_ENDPOINT + "/posts");
     const result = await fetch(CHARACTER_ENDPOINT + "/posts",
         {
@@ -202,18 +208,34 @@ export async function likePost(postId){
             },
             method: 'PUT',
             body: JSON.stringify(requestBody)
-        })
+        });
 }
 
-export async function getAllPosts(){
-    console.log("Called", CHARACTER_ENDPOINT + "/posts");
-    const result = await fetch(CHARACTER_ENDPOINT + "/posts");
+export async function unlikePost(postId, userId){
+    const requestBody = {postId, userId};
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/unlike");
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/unlike",
+        {
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'PUT',
+            body: JSON.stringify(requestBody)
+        });
+}
+
+export async function getAllPosts(activeUser){
+    const uid = activeUser === "" ? -1 : activeUser;
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/" + uid);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/" + uid);
     return (await result.json());
 }
 
-export async function getUserPosts(id){
-    console.log("Called", CHARACTER_ENDPOINT + "/posts/" + id);
-    const result = await fetch(CHARACTER_ENDPOINT + "/posts/" + id);
+export async function getUserPosts(id, activeUser){
+    const uid = activeUser === "" ? -1 : activeUser;
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/" + id + "/" + uid);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/" + id + "/" + uid);
     return (await result.json());
 }
 
