@@ -8,41 +8,36 @@ const Navigation = ({
 }) => {
 
     const uid = read_cookie("userId");
+    const role = read_cookie("userRole");
     console.log(uid);
 
     return(
         <div className={`navBar`}>
-                <Link to={`/home`} id={`Home`} className={`navItem ${active === "Home" ? "activeTab" : ""}`} >
+                <Link to={`/`} id={`Home`} className={`navItem ${active === "Home" ? "activeTab" : ""}`} >
                     <i className={`fa fas-home} navIcon`}/>
                     <span className={`navText`}>Home</span>
                 </Link>
-
-                <Link to={`/create`} id={`Create`} className={`navItem ${active === "Create" ? "activeTab" : ""}`} >
+            {role != "anon" && role != "member" &&
+                <Link to={`/create`} id={`Create`} className={`navItem ${active === "Create" ? "activeTab" : ""}`}>
                     <i className={`fa fas-pen navIcon`}/>
                     <span className={`navText`}>Create</span>
                 </Link>
-            {uid != "" &&
+            }
+            {role != "anon" &&
                 <Link to={`/profile`} id={`Profile`}
                       className={`navItem ${active === "Profile" ? "activeTab" : ""}`}>
                     <i className={`fa fas-user navIcon`}/>
                     <span className={`navText`}>Profile</span>
                 </Link>
             }
-            {uid != "" &&
-
-                <Link to={`/characters/${read_cookie("userId")}`} id={`Characters`} className={`navItem ${active === "Characters" ? "activeTab" : ""}`} >
-                        <i className={`fa fas-report navIcon`}/>
-                        <span className={`navText`}>Characters</span>
-                    </Link>
-            }
-                <Link to={`/wiki`} id={`Wiki`} className={`navItem ${active === "Wiki" ? "activeTab" : ""}`} >
-                    <i className={`fa fas-lightbulb navIcon`}/>
-                    <span className={`navText`}>Wiki</span>
-                </Link>
-                <Link to={`/`} className={`navItem`} >
-                    <i className={`fa fas-lightbulb navIcon`}/>
-                    <span className={`navText`}>{uid != "" ? "Log out" : "Log in"}</span>
-                </Link>
+            <Link to={`/wiki`} id={`Wiki`} className={`navItem ${active === "Wiki" ? "activeTab" : ""}`} >
+                <i className={`fa fas-lightbulb navIcon`}/>
+                <span className={`navText`}>Wiki</span>
+            </Link>
+            <Link to={`/login`} className={`navItem`} >
+                <i className={`fa fas-lightbulb navIcon`}/>
+                <span className={`navText`}>{role != "anon" ? "Log out" : "Log in"}</span>
+            </Link>
         </div>
     )
 }

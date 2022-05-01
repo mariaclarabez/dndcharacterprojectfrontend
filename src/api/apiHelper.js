@@ -67,8 +67,8 @@ export async function getAllUsers() {
 
 }
 
-export async function registerUser(username, password) {
-    const requestBody = {username, password};
+export async function registerUser(username, password, role) {
+    const requestBody = {username, password, role};
     console.log("Called", REGISTER_ENDPOINT);
     const result = await fetch(REGISTER_ENDPOINT, {
         headers: {
@@ -176,6 +176,18 @@ export async function createPost(userId, body, tags) {
             },
             method: 'POST',
             body: JSON.stringify(requestBody)
+        });
+}
+
+export async function deletePost(postId){
+    console.log("Called", CHARACTER_ENDPOINT + "/posts/" + postId);
+    const result = await fetch(CHARACTER_ENDPOINT + "/posts/" + postId,
+        {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'DELETE'
         });
 }
 

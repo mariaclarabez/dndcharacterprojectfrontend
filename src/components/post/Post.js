@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import PostForm from "./PostForm";
-import {likePost, postReply} from "../../api/apiHelper";
+import {likePost, postReply, deletePost} from "../../api/apiHelper";
 import Replies from "./Replies";
 import {useNavigate} from 'react-router-dom';
 import {bake_cookie, read_cookie} from "sfcookies";
-
+import PromptLoginModal from "../login/PromptLoginModal";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
 
 const Post = ({
     data = {
@@ -23,35 +24,64 @@ const Post = ({
     const [replyBody, setReplyBody] = useState('');
     const [likes, setLikes] = useState(data.likes);
     const [trigger, setTrigger] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
     const navigate = useNavigate();
+    const role = read_cookie("userRole");
 
     console.log(`in post: ${data.id}`)
     const onPost = async () => {
-        await postReply(data.id, 1, replyBody);
+        await postReply(data.id, read_cookie("userId"), replyBody);
         data.replies = data.replies + 1;
         setTrigger(!trigger);
     }
+
+    const handleCancelLogin = () => {
+        setShowLogin(false);
+    }
+
     const onLike = () => {
-        likePost(data.id);
-        setLikes(likes + 1);
+        if (role !== 'anon') {
+            likePost(data.id);
+            console.log(role);
+            setLikes(likes + 1);
+        }
+        else{
+            setShowLogin(true);
+        }
     }
     
     const onReply = () => {
         setShowReplyForm(!showReplyForm);
     }
     
-    const onShare = () => {
-        
+    const handleDeletePost = () => {
+        setShowConfirmDelete(true);
+    }
+    
+    const confirmDelete = async () => {
+        await deletePost(data.id);
+        setShowConfirmDelete(false);
+        setTrigger(!trigger);
+    }
+    
+    const cancelDelete = () => {
+        setShowConfirmDelete(false);
     }
 
     const toProfile = (event) => {
-        bake_cookie("profileId", event.target.id);
-        navigate("/profile");
+        navigate("/profile/" + event.target.id);
     }
     
     return(
         <>
+            {showLogin &&
+                <PromptLoginModal onCancel={handleCancelLogin}/>
+            }
+            {showConfirmDelete &&
+                <ConfirmDeleteModal onSave={confirmDelete} onCancel={cancelDelete}/>
+            }
             <div className={`post`}>
                 <img
                     src={data.avatar}
@@ -68,12 +98,11 @@ const Post = ({
                             <i className={`fas fa-comment stat`}/>
                             {data.replies}
                         </div>
-                        <div onClick={onShare}>
-                            <i className={`fas fa-share stat`}/>
-                            {data.shares}
-                        </div>
                     </div>
                 </div>
+                {role === "admin" &&
+                    <i className={`fas fa-times`} onClick={handleDeletePost}/>
+                }
             </div>
             {showReplyForm &&
                 <div className={`replyForm`}>

@@ -32,7 +32,8 @@ export default function LoginModal({show, onUpdateLogin, onCancel}) {
         } else {
             bake_cookie("userId", result.id);
             bake_cookie("userAvatar", result.avatar);
-            navigate("/home")
+            bake_cookie("userRole", result.role);
+            navigate("/");
             setLoginError();
         }
 

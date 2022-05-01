@@ -14,7 +14,7 @@ const HomeComponent = () => {
 
     bake_cookie("profileId", "");
     const uid = read_cookie("userId");
-
+    console.log(read_cookie("userRole"));
 
     const handleClick = (event) => {
         setActive(event.target.id);

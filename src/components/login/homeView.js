@@ -14,10 +14,10 @@ function HomeView(){
     const [showRegister, setShowRegister] = useState(false);
     const [loginStatus, setLoginStatus] = useState('');
 
-    async function onUpdateRegister(username, password) {
+    async function onUpdateRegister(username, password, role) {
         console.log("attempting to register")
         setShowRegister(false);
-        await registerUser(username, password);
+        await registerUser(username, password, role);
         
     }
 
@@ -44,8 +44,8 @@ function HomeView(){
     }
 
     bake_cookie("userId", "");
-    bake_cookie("profileId", "");
-
+    bake_cookie("userAvatar", "");
+    bake_cookie("userRole", "anon");
 
     return (
         <>
@@ -67,7 +67,7 @@ function HomeView(){
         <button className="register-button" onClick={register}>Register</button>
 
         <div className="continue-as-guest-button">
-            <Link to="/home">Continue as Guest</Link>
+            <Link to="/">Continue as Guest</Link>
         </div>
 
         </div>

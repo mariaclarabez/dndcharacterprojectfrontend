@@ -15,11 +15,12 @@ function App() {
     return (
       <div className="App">
         <Routes>
-          <Route path="/" element={ <HomeView/> } />
-            <Route path="/home" element={<HomeScreen/>}/>
+          <Route path="/" element={ <HomeScreen/> } />
+            <Route path="/login" element={<HomeView/>}/>
           <Route path="create" element={ <CharacterView/> } />
-          <Route path="/profile" element={<ProfileScreen/>}/>
-          <Route path="/wiki" element={<WikiScreen/>}/>
+            <Route path="/profile" element={<ProfileScreen/>}/>
+            <Route path="/profile/:uid" element={<ProfileScreen/>}/>
+            <Route path="/wiki" element={<WikiScreen/>}/>
             <Route path="create/user/:userId" element={<CharacterView />} />
         </Routes>
       </div>

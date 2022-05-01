@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {getReplies} from '../../api/apiHelper';
+import {read_cookie} from "sfcookies";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
 
 const Reply = (
     {
@@ -12,6 +14,7 @@ const Reply = (
             "body": "this is a reply"
         }
     }) => {
+
     return(
         <div className={`post`}>
             <img
@@ -29,12 +32,14 @@ const Reply = (
 const Replies = ({parent = 1, refresh}) =>
 {
     const [replies, setReplies] = useState([]);
+    const role = read_cookie("userRole");
 
     console.log(parent);
     useEffect(() => {
         const fetchData = async () => {
             const replies = await getReplies(parent);
             setReplies(await replies);
+            console.log(replies);
         }
         fetchData();
         console.log('refetch replies');
@@ -42,7 +47,7 @@ const Replies = ({parent = 1, refresh}) =>
 
     return (
         <div>
-            {replies.map(r => <Reply reply={r}/>)}
+            {replies.map(r => <Reply reply={r} role={role}/>)}
         </div>
     );
 }

@@ -130,14 +130,13 @@ body{
 }
 .post > div > .stats{
     display: flex;
-    justify-content: space-between;
     margin-right: 10px;
     margin-left: 10px;
     font-size: 14px;
 }
-.post > div > .stats > span > .stat{
+.post > div > .stats > div{
     color: var(--accent4);
-    padding-right: 10px;
+    padding-right: 3em;
 }
 .tab{
     color: var(--lighttext) !important;
@@ -234,6 +233,31 @@ body{
     align-items: center;
     justify-content: center;
     z-index:2;
+}
+.loginModal{
+    position: fixed;
+    background: lightcyan;
+    border: 2px solid black;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    padding: 20px;
+    display: flex;
+    z-index: 2;
+    align-items: center;
+}
+.loginModal > div{
+    position: relative;
+    height: 100%;
+}
+.loginModal > div > ul > li{
+    text-align: left;
+}
+.cancelButton{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .avatarOption{
     height: 4.5em;

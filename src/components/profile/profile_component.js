@@ -5,7 +5,7 @@ import Posts from "../post/Posts";
 import PostForm from "../post/PostForm";
 import EditProfile from "./EditProfile";
 
-const ProfileComponent = () => {
+const ProfileComponent = ({destinationUser}) => {
     const [user, setUser] = useState({});
     const [showEdit, setShowEdit] = useState(false);
     const [active, setActive] = useState("Posts");
@@ -15,11 +15,13 @@ const ProfileComponent = () => {
     const [editUser, setEditUser] = useState({});
     const availableTags = ['#dm', '#characters', '#maps', '#memes'];
 
-    const defaultAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkw1WKC4E9OLSY7SOrahR3nTeGNaYbBblzNQ&usqp=CAU"
-    const activeUser = read_cookie("profileId") === "" || read_cookie("profileId") === read_cookie("userId");
-    const id = activeUser ? read_cookie("userId") : read_cookie("profileId");
+    console.log(destinationUser);
 
-    console.log("profile: " + read_cookie("profileId") + "  user: " + read_cookie("userId"));
+    const defaultAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkw1WKC4E9OLSY7SOrahR3nTeGNaYbBblzNQ&usqp=CAU"
+    const activeUser = destinationUser === undefined || read_cookie("profileId") === destinationUser;
+    const id = activeUser ? read_cookie("userId") : destinationUser;
+
+    console.log("profile: " + destinationUser + "  user: " + read_cookie("userId"));
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +34,7 @@ const ProfileComponent = () => {
             console.log(user);
         }
         fetchData();
-    }, []);
+    }, [destinationUser]);
 
     const handleCreate = async () => {
         console.log(postBody);
