@@ -240,15 +240,15 @@ export async function getUserPosts(id, activeUser){
 }
 
 export async function getReplies(postId){
-    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies/" + postId);
-    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies/" + postId);
+    console.log("Called", CHARACTER_ENDPOINT + "/replies/" + postId);
+    const result = await fetch(CHARACTER_ENDPOINT + "/replies/" + postId);
     return (await result.json());
 }
 
 export async function postReply(postId, userId, body){
-    console.log("Called", CHARACTER_ENDPOINT + "/posts/replies");
+    console.log("Called", CHARACTER_ENDPOINT + "/replies");
     const requestBody = {postId, userId, body};
-    const result = await fetch(CHARACTER_ENDPOINT + "/posts/replies",
+    const result = await fetch(CHARACTER_ENDPOINT + "/replies",
         {
             headers:{
                 'Accept': 'application/json',

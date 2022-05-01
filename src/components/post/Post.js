@@ -119,7 +119,7 @@ const Post = ({
                     {data.replies > 0 &&
                         <Replies parent={data.id} refresh={trigger}/>
                     }
-                    {read_cookie("userId") != "" &&
+                    {role !== "anon" &&
                         <PostForm onPost={onPost} setBody={setReplyBody}/>
                     }
                 </div>

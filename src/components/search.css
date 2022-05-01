@@ -18,18 +18,21 @@
 
 
 }
+.search{
+    width: 100%;
+    justify-content: center;
+    padding-right: 23%;
+}
 .search-title{
-    padding-top: 30px;
     color: white;
     padding-bottom: 30px;
 }
 
 .search-container {
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .mainComponent{
-    display: inline-block;
     margin-top: 26px;
     padding-right: 26px;
 }

@@ -32,8 +32,7 @@ const Reply = (
 const Replies = ({parent = 1, refresh}) =>
 {
     const [replies, setReplies] = useState([]);
-    const role = read_cookie("userRole");
-
+    
     console.log(parent);
     useEffect(() => {
         const fetchData = async () => {
@@ -47,7 +46,7 @@ const Replies = ({parent = 1, refresh}) =>
 
     return (
         <div>
-            {replies.map(r => <Reply reply={r} role={role}/>)}
+            {replies.map(r => <Reply reply={r}/>)}
         </div>
     );
 }

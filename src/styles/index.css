@@ -157,7 +157,7 @@ body{
 }
 .homeTabs > li > .active{
     background-color: var(--lightOrange) !important;
-    color: var(--darkAccent);
+    color: var(--darkAccent) !important;
     border-color: var(--lightOrange) !important;
 }
 .replyForm{
@@ -173,8 +173,9 @@ body{
 .profileHeader{
     display: flex;
     margin-left: 26px;
-    background-color: var(--accent2);
+    background-color: var(--lightOrange);
     padding: 10px;
+    color: var(--darkAccent);
     border-radius: 20px;
 }
 .profileHeaderUserName{
@@ -205,7 +206,7 @@ body{
 .profileBody{
     margin-left: 26px;
     margin-top: 26px;
-    background-color: var(--darkText);
+    background-color: var(--darkAccent);
     border-radius: 20px;
     padding: 10px;
 }
@@ -255,8 +256,10 @@ body{
 }
 .loginModal{
     position: fixed;
-    background: lightcyan;
+    background: var(--lightOrange);
+    color: var(--darkAccent);
     border: 2px solid black;
+    border-radius: 10px;
     width: 50%;
     height: 50%;
     top: 25%;

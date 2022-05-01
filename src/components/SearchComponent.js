@@ -42,10 +42,11 @@ export default function SearchComponent() {
             </div>
             <div className={"col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 mainComponent"}>
 
-                <div>
+                <div className={'search'}>
                     <div className="search-title"><h2>Search the Dungeons and Dragons 5th Edition API</h2>
-                        <div className="search-container"><SearchBar onSearch={onSearch}/> </div>
-                    </div>
+                    <div className="search-container"><SearchBar onSearch={onSearch}/> </div>
+                </div>
+                    
                 <ResultList results={state}/>
             </div>
         </div>

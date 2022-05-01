@@ -125,8 +125,7 @@ const ProfileComponent = ({destinationUser}) => {
                 </div>
 
                 <div className={`profileBody`}>
-                    <ul className={`nav mb-2 nav-tabs `}>
-                        <ul className={`nav nav-tabs flex-nowrap profile-tabs wd-text-no-wrap`}>
+                    <ul className={`nav mb-2 nav-tabs homeTabs `}>
                             <li className="nav-item profileNavItem">
                                 <p id={`Posts`} className={`nav-link tab ${"Posts" === active ? "active" : ""}`}
                                    onClick={handleSelect}>{`Posts`}</p>
@@ -135,7 +134,6 @@ const ProfileComponent = ({destinationUser}) => {
                                 <p id={`Characters`} className={`nav-link tab ${"Characters" === active ? "active" : ""}`}
                                    onClick={handleSelect}>{`Characters`}</p>
                             </li>
-                        </ul>
                     </ul>
                     {active === "Posts" && activeUser &&
                         <PostForm onPost={handleCreate} setBody={setPostBody}/>
