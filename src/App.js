@@ -19,16 +19,12 @@ function App() {
           <Route path="/" element={ <HomeScreen/> } />
             <Route path="/login" element={<HomeView/>}/>
           <Route path="create" element={ <CharacterView/> } />
-<<<<<<< HEAD
             <Route path="/profile" element={<ProfileScreen/>}/>
             <Route path="/profile/:uid" element={<ProfileScreen/>}/>
-            <Route path="/wiki" element={<WikiScreen/>}/>
-=======
           <Route path="/search" element={ <SearchComponent/> } />
           <Route path="/search/:searchTerm" element={ <SearchComponent/> } />
 
           <Route path="/profile" element={<ProfileScreen/>}/>
->>>>>>> clara-1
             <Route path="create/user/:userId" element={<CharacterView />} />
             <Route path="/details/:type/:name" element={ <DetailsComponent/> } />
 
