@@ -2,6 +2,20 @@
     width: 30%;
 }
 
+.item-content-title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.item-title {
+    color: white;
+    padding-bottom: 30px;
+    font-size: 30px;
+}
+.item-content {
+    color: white;
+}
+
+
 .full-div{
     align-items: center;
 
