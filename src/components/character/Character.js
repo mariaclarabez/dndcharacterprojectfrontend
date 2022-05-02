@@ -1,8 +1,10 @@
 import React from "react";
+import Table from "react-bootstrap/Table";
 
 export const Character = ({character}) => {
     return(
-        <table>
+        <Table striped bordered hover className={'characterTable'}>
+            <thead>
             <tr>
                 <td> Name</td>
                 <td> Class</td>
@@ -15,6 +17,8 @@ export const Character = ({character}) => {
                 <td> Intelligence</td>
                 <td> Constitution</td>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td> {character.char_name}</td>
                 <td> {character.class_name}</td>
@@ -27,7 +31,8 @@ export const Character = ({character}) => {
                 <td> {character.intelligence}</td>
                 <td> {character.constitution}</td>
             </tr>
-        </table>
+            </tbody>
+        </Table>
     )
 }
 

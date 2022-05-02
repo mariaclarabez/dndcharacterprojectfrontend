@@ -1,20 +1,37 @@
-.header {
-    margin-top:20px;
-    margin-bottom: 20px
-}
+
 .delete-icon {
     padding-right: 7px;
 }
 .delete-icon:hover {
 color: blue;
 }
+.characterTable{
+    background-color: rgb(215,151,184);
+    color: rgb(81,67,93);
+    overflow-x: scroll;
+    display: block;
+}
+.characterView{
+    width: 100%;
+    padding-right: 26px;
+}
+
 .create-character-btn {
     margin-bottom: 20px;
-
+}
+.create-character-btn > button{
+    background-color: rgb(251,179,160);
+    color: rgb(81,67,93);
+    border: none;
+}
+.updateButton{
+    color: rgb(81,67,93);
+    background-color: rgb(251,179,160);
+    border: none;
 }
 .update-icon {
     padding-left: 2px;
 }
 .update-icon:hover {
-    color: blue;
-    }
+    border: 1px rgb(81,67,93) solid;
+}

@@ -14,10 +14,6 @@ import {faPen} from '@fortawesome/free-solid-svg-icons';
 import "./characterview.css"
 import {read_cookie} from "sfcookies";
 
-
-
-
-
 export default function CharacterView(){
     const [characters, setcharacters] = useState([]);
     const [show, setShow] = useState(false);
@@ -85,12 +81,11 @@ export default function CharacterView(){
 
     return (
         <>
-        <div className="full-screen">
-            <div className="header"><h1>Welcome to the DnD Character Generator!</h1></div>
+        <div className="characterView">
             <div className="create-character-btn">
             <Button variant="primary" onClick={() => setShowCampaign(true)}>Create Campaign!</Button></div>
 
-            <div><Button variant="primary" onClick={() => setShow(true)}>Create Character!</Button></div>
+            <div className={"create-character-btn"}><Button variant="primary" onClick={() => setShow(true)}>Create Character!</Button></div>
             
             <CreateCampaignModal show={showCampaign} onClose={onClose}/>
             
@@ -98,7 +93,7 @@ export default function CharacterView(){
             <CharacterEditModal characterid={characterToEdit} show={showEdit} onUpdate={onEdit} onClose={() => setShowEdit(false)}/>
 
             <SpellCreatorModal characterid={_.get(spellsCharacter, 'id')} classid={_.get(spellsCharacter, 'class_id')} show={showSpells} onClose={() => setShowSpells(false)} />
-            <Table striped bordered hover>
+            <Table striped bordered hover className={'characterTable'}>
                 <thead>
                     <tr>
                         <th>id</th>
@@ -130,7 +125,7 @@ export default function CharacterView(){
                         <td> {dd_char.dexterity}</td>
                         <td> {dd_char.intelligence}</td>
                         <td> {dd_char.constitution}</td>
-                        <td> <Button onClick={() => showSpellsModal(dd_char)}>View/Update Spells</Button></td>
+                        <td> <Button className={'updateButton'} onClick={() => showSpellsModal(dd_char)}>View/Update Spells</Button></td>
                         <td> 
                             <span className="delete-icon" onClick={() => deleteCharacterById(dd_char.id)}><FontAwesomeIcon icon={faTrashCan}/></span>
                             <span className="update-icon" onClick={() => showEditModal(dd_char)}><FontAwesomeIcon icon={faPen} /></span>
