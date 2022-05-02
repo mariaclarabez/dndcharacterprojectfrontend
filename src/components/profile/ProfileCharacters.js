@@ -8,6 +8,7 @@ const ProfileCharacters = ({user}) => {
     async function getUserCharacters() {
         const chars = await getCharacterForUser(user);
         setCharacters(await chars);
+        console.log(chars);
     }
     
     useEffect(() => {

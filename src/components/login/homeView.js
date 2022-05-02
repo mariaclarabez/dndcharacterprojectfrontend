@@ -14,6 +14,8 @@ function HomeView(){
     const [showRegister, setShowRegister] = useState(false);
     const [loginStatus, setLoginStatus] = useState('');
 
+    const navigate = useNavigate();
+
     async function onUpdateRegister(username, password, role) {
         console.log("attempting to register")
         setShowRegister(false);
@@ -43,6 +45,10 @@ function HomeView(){
         setShowRegister(false);
     }
 
+    const continueAsGuest = () => {
+        navigate("/");
+    }
+
     bake_cookie("userId", "");
     bake_cookie("userAvatar", "");
     bake_cookie("userRole", "anon");
@@ -55,7 +61,7 @@ function HomeView(){
             <img className="dragon-img" src={dragon}></img></div>
   
         <div className="title">
-            <h1>Dungeons and Dragons Character Generator</h1>
+            Dungeons and Dragons Forum
         </div>
 
         <LoginModal show={showLogin} onUpdateLogin={onUpdateLogin} onCancel={onCancelLogin}/>
@@ -66,9 +72,8 @@ function HomeView(){
 
         <button className="register-button" onClick={register}>Register</button>
 
-        <div className="continue-as-guest-button">
-            <Link to="/">Continue as Guest</Link>
-        </div>
+        <button className={'continue-as-guest-button'} onClick={continueAsGuest}>Continue as Guest</button>
+
 
         </div>
         

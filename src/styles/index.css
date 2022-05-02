@@ -11,6 +11,7 @@
     --lightPurple: rgb(203, 143, 190);
     --lightPink: rgb(215,151,184);
     --lightOrange: rgb(251,179,160);
+    --lighterOrange: rgb(291,219,200);
     --darkAccent: rgb(81,67,93);
 }
 body{
@@ -242,7 +243,8 @@ body{
 }
 .avatarModal{
     position: fixed;
-    background: gray;
+    background: var(--lightPink);
+    border-radius: 10px;
     border: 1px solid black;
     width: 50%;
     height: 50%;
@@ -281,10 +283,15 @@ body{
     top: 0;
     right: 0;
 }
+.formInputField{
+    background-color: var(--lighterOrange);
+    min-width: 40%;
+    width: fit-content;
+}
 .avatarOption{
-    height: 4.5em;
-    width: 4.5em;
-    border-radius: 50px;
+    height: 15%;
+    width: 15%;
+    border-radius: 50%;
     display: inline-block;
     margin: 1em 2em 1em 2em;
     z-index:3;

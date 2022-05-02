@@ -38,13 +38,6 @@ const Navigation = ({
                     <i className={`fa fas-lightbulb navIcon`}/>
                     <span className={`navText`}>{role !== "anon" ? "Log out" : "Log in"}</span>
                 </Link>
-            {uid !== "" &&
-
-                <Link to={`/characters/${read_cookie("userId")}`} id={`Characters`} className={`navItem ${active === "Characters" ? "activeTab" : ""}`} >
-                        <i className={`fa fas-report navIcon`}/>
-                        <span className={`navText`}>Characters</span>
-                    </Link>
-            }
 
 
         </div>

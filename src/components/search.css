@@ -1,5 +1,5 @@
 .input-field {
-    width: 30%;
+    width: 60%;
 }
 
 .item-content-title{
@@ -7,12 +7,10 @@
     font-size: 18px;
 }
 .item-title {
-    color: white;
     padding-bottom: 30px;
     font-size: 30px;
 }
 .item-content {
-    color: white;
 }
 
 
@@ -38,15 +36,23 @@
     padding-right: 23%;
 }
 .search-title{
-    color: white;
     padding-bottom: 30px;
 }
 
 .search-container {
     padding-top: 20px;
+    width: 100%;
+    padding-bottom: 20px;
 }
 
 .mainComponent{
     margin-top: 26px;
     padding-right: 26px;
+}
+.mainDetails{
+    margin-left: 26px;
+    background-color: var(--lightOrange);
+    padding: 10px;
+    border-radius: 20px;
+    color: var(--darkAccent);
 }

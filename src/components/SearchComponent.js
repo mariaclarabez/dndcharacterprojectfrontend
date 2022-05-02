@@ -38,16 +38,19 @@ export default function SearchComponent() {
         </div>
         <div className={"row flex-noWrap"}>
             <div className={"col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 leftComponent"}>
-                <Navigation active={'Home'}/>
+                <Navigation active={'Search'}/>
             </div>
             <div className={"col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 mainComponent"}>
 
                 <div className={'search'}>
-                    <div className="search-title"><h2>Search the Dungeons and Dragons 5th Edition API</h2>
-                    <div className="search-container"><SearchBar onSearch={onSearch}/> </div>
+                    <div className={'mainDetails'}>
+                        <div className="search-title"><h2>Search the Dungeons and Dragons 5th Edition API</h2>
+                        <div className="search-container"><SearchBar onSearch={onSearch}/> </div>
+                        <ResultList results={state}/>
+                    </div>
                 </div>
-                    
-                <ResultList results={state}/>
+
+
             </div>
         </div>
         </div>

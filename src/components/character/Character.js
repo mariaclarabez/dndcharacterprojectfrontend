@@ -34,7 +34,7 @@ export const Character = ({character}) => {
 const CharacterPost = ({character}) => {
     return (
         <div className={'post'}>
-            <CharacterPost character={character}/>
+            <Character character={character}/>
         </div>
     )
 }

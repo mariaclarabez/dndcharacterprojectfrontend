@@ -40,7 +40,7 @@ export default function LoginModal({show, onUpdateLogin, onCancel}) {
     }
     
     return(
-        <Modal show={show} onHide={onCancel}>
+        <Modal className={'loginModalMain'} show={show} onHide={onCancel}>
             <Modal.Header closeButton>
                 <Modal.Title>Log In</Modal.Title>
             </Modal.Header>

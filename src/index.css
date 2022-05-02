@@ -13,3 +13,9 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a {
+    color: white !important;
+}
+modal-header{
+    background-color:  rgb(251,179,160) !important;
+}

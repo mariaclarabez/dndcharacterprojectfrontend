@@ -49,11 +49,6 @@ const HomeComponent = () => {
                               onClick={handleClick}>All</span>
                     </li>
                     <li className={`nav-item`}>
-                        <span id={'following'}
-                              onClick={handleClick}
-                              className={`nav-link ${active === 'following' ? 'active' : ''}`}>Following</span>
-                    </li>
-                    <li className={`nav-item`}>
                         <span id={'dm'}
                               onClick={handleClick}
                               className={`nav-link ${active === 'dm' ? 'active' : ''}`}>Dungeon Masters</span>

@@ -63,22 +63,20 @@ const EditProfile = ({onSave, onCancel, user, setUser}) => {
                 </div>
                 <div className={`profileData`}>
                     <div className={`profileHeaderName`}>
-                        <input id={"name"} value={user.name} onChange={handleNameChange}/>
+                        <input className={'formInputField'} id={"name"} value={user.name} onChange={handleNameChange}/>
                     </div>
                     <div className={`profileHeaderUserName`}>
                         @{user.username}
                     </div>
                     <div className={`profileHeaderUserName`}>
-                        Birthday:
-                        <DatePicker selected={user.dob} onChange={handleDateChange}/>
+                        Birthday: <DatePicker className={'formInputField'} selected={user.dob} onChange={handleDateChange}/>
                     </div>
                     <div className={`profileHeaderUserName`}>
-                        Hometown:
-                        <input id={"hometown"} value={user.hometown} onChange={handleHometownChange}/>
+                        Hometown: <input className={'formInputField'} id={"hometown"} value={user.hometown} onChange={handleHometownChange}/>
                     </div>
                     <hr/>
                     <div className={`profileBio`}>
-                        Bio: <textarea id={"bio"} value={user.bio} onChange={handleBioChange}/>
+                        Bio: <textarea id={"bio"} className={'formInputField'} value={user.bio} onChange={handleBioChange}/>
                     </div>
                 </div>
                 <i className={`fas fa-times editButton`}

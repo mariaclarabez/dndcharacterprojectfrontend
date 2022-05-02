@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import "./characterview.css"
+import {read_cookie} from "sfcookies";
 
 
 
@@ -58,7 +59,7 @@ export default function CharacterView(){
 
     async function onUpdate(name, classId, raceId, campaignId) {
         setShow(false);
-        const ownerId = params.userId;
+        const ownerId = read_cookie("userId");
         console.log("Creating character", name, classId, raceId, campaignId, ownerId);
         await createCharacter(name, classId, raceId, campaignId, ownerId);
         fetchData();
@@ -104,7 +105,6 @@ export default function CharacterView(){
                         <th>Character Name</th>
                         <th>Class</th>
                         <th>Race</th>
-                        <th>Owner</th>
                         <th>Campaign</th>
                         <th>Wisdom</th>
                         <th>Charisma</th>
@@ -123,7 +123,6 @@ export default function CharacterView(){
                         <td> {dd_char.char_name}</td>
                         <td> {dd_char.class_name}</td>
                         <td> {dd_char.race_name}</td>
-                        <td> {dd_char.owner_name || 'Guest'}</td>
                         <td> {dd_char.campaign_name}</td>
                         <td> {dd_char.wisdom}</td>
                         <td> {dd_char.charisma}</td>
